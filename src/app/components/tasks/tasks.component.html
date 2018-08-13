@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-md-12">
+        <div>
+          <input #box type="text" id="newtask" name="newtask" placeholder="Adicione o título da tarefa e tecle Enter para incluir" (keyup.enter)="onEnter(box.value)" style="width: 100%;"/>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 mt-20">
+      <p>Tarefas Pendentes</p>
+      <div *ngFor="let task of tasksPendent" class="col-md-12">
+          <div>
+            <input type="checkbox" name="status" [checked]="task.status" (change)="finishTask($event, task.id)">
+            <span name="titulo"> {{task.titulo}}</span>
+          </div>
+      </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 mt-20">
+      <p>Tarefas Concluídas</p>
+      <div *ngFor="let task of tasksConcluded" class="col-md-12">
+          <div>
+            <input type="checkbox" name="status" [checked]="!task.status" (change)="pendentTask($event, task.id)">
+            <span name="titulo"> {{task.titulo}}</span>
+          </div>
+      </div>
+    </div>
+</div>
